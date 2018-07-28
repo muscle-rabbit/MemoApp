@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import MemoList from '../components/MemoList';
 import CircleButton from '../elements/CircleButton';
 
@@ -16,7 +16,7 @@ class MemoListScreen extends React.Component {
       <View style={styles.container}>
         <MemoList />
         <CircleButton>
-          <Text>+</Text>
+          {'\uf0fe'}
         </CircleButton>
       </View>
     );
