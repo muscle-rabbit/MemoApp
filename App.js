@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import MemoListScreen from './src/screens/MemoListScreen';
 import Header from './src/components/Header';
+import MemoDetailScreen from './src/screens/MemoDetailScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +18,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <Header />
-        <MemoListScreen />
+        <MemoDetailScreen />
       </View>
     );
   }
