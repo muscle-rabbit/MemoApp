@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
+    backgroundColor: '#fff',
   },
   memoEditInput: {
     paddingTop: 32,
@@ -21,7 +22,7 @@ class MemoEditScreen extends React.Component {
     return (
       <View style={styles.container}>
         <TextInput style={styles.memoEditInput} multiline value="hi" />
-        <CircleButton>
+        <CircleButton navigation={this.props.navigation}>
           {'\uf14a'}
         </CircleButton>
       </View>

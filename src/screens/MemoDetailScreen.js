@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     flex: 1,
+    backgroundColor: '#fff',
   },
   memoDetailHeader: {
     backgroundColor: '#A7A096',
@@ -44,7 +45,7 @@ class MemoDetailScreen extends React.Component {
           <Text style={styles.memoDetailContent}>講座のアイデア</Text>
         </View>
 
-        <CircleButton color="white" style={styles.editButton}>
+        <CircleButton color="white" style={styles.editButton} onPress={() => { this.props.navigation.navigate('MemoEdit'); }}>
           {'\uf044'}
         </CircleButton>
       </View>

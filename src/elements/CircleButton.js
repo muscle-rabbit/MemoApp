@@ -1,14 +1,20 @@
 import * as React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import {
+  StyleSheet, View, Text, TouchableHighlight,
+} from 'react-native';
 
 import { Font } from 'expo';
 import fontAwesome from '../../assets/fonts/fa-regular-400.ttf';
 
 const styles = StyleSheet.create({
-  circleBottun: {
+  container: {
     position: 'absolute',
     bottom: 32,
     right: 32,
+    width: 48,
+    height: 48,
+  },
+  circleBottun: {
     width: 48,
     height: 48,
     backgroundColor: '#ffc0cb',
@@ -41,7 +47,7 @@ class CircleButton extends React.Component {
 
 
   render() {
-    const { style, color } = this.props;
+    const { style, color, onPress } = this.props;
 
     let bgColor = '#ffc0cb';
     let textColor = '#fff';
@@ -51,15 +57,17 @@ class CircleButton extends React.Component {
       textColor = '#ffc0cb';
     }
     return (
-      <View style={[styles.circleBottun, style, { backgroundColor: bgColor }]}>
-        {
-          this.state.fontLoaded ? (
-            <Text style={[styles.circleButtonTitle, { color: textColor }]}>
-              {this.props.children}
-            </Text>
-          ) : null
-        }
-      </View>
+      <TouchableHighlight style={[styles.container, style]} onPress={onPress} underlayColor="transparent">
+        <View style={[styles.circleBottun, { backgroundColor: bgColor }]}>
+          {
+            this.state.fontLoaded ? (
+              <Text style={[styles.circleButtonTitle, { color: textColor }]}>
+                {this.props.children}
+              </Text>
+            ) : null
+          }
+        </View>
+      </TouchableHighlight>
     );
   }
 }
