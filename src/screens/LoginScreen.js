@@ -39,13 +39,38 @@ const styles = StyleSheet.create({
 });
 
 class LoginScreen extends React.Component {
+  state = {
+    email: '',
+    password: '',
+  }
+
+  // eslint-disable-next-line
+  handleSubmit() {
+    
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Login</Text>
-        <TextInput style={styles.Input} value="Email adress" />
-        <TextInput style={styles.Input} value="Password" />
-        <TouchableHighlight style={styles.button} title="submit" onPress={() => {}} underlayColor="#ffc0cb87">
+        <TextInput
+          style={styles.Input}
+          value={this.state.email}
+          onChangeText={(text) => { this.setState({ email: text }); }}
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholder="Email Address"
+        />
+        <TextInput
+          style={styles.Input}
+          value={this.state.password}
+          onChangeText={(text) => { this.setState({ password: text }); }}
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholder="password"
+          secureTextEntry
+        />
+        <TouchableHighlight style={styles.button} title="submit" onPress={this.handleSubmit}>
           <Text style={styles.buttonTitle}>Login</Text>
         </TouchableHighlight>
       </View>
