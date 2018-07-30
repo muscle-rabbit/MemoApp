@@ -11,11 +11,16 @@ const styles = StyleSheet.create({
 });
 
 class MemoListScreen extends React.Component {
+  handlePress() {
+    const { params } = this.props.navigation.state;
+    this.props.navigation.navigate('MemoCreate', { currentUser: params.currentUser });
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <MemoList navigation={this.props.navigation} />
-        <CircleButton onPress={() => { this.props.navigation.navigate('MemoEdit'); }}>
+        <CircleButton onPress={this.handlePress.bind(this)}>
           {'\uf0fe'}
         </CircleButton>
       </View>
@@ -24,3 +29,4 @@ class MemoListScreen extends React.Component {
 }
 
 export default MemoListScreen;
+// this.props.navigation.navigate('MemoEdit');
