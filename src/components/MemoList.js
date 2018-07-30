@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  StyleSheet, View, Text, TouchableHighlight,
+  StyleSheet, View, Text, TouchableHighlight, FlatList,
 } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -23,28 +23,22 @@ const styles = StyleSheet.create({
 });
 
 class MemoList extends React.Component {
+  renderMemo({ item }) {
+    console.log(item);
+    return (
+      <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail'); }}>
+        <View style={styles.memoListItem}>
+          <Text style={styles.memoListTitle}>{item.body}</Text>
+          <Text style={styles.memoListDate}>2018/7/30</Text>
+        </View>
+      </TouchableHighlight>
+    );
+  }
+
   render() {
-    console.log(this.props.memoList);
     return (
       <View style={styles.memoList}>
-        <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail'); }}>
-          <View style={styles.memoListItem}>
-            <Text style={styles.memoListTitle}>Hello</Text>
-            <Text style={styles.memoListDate}>2018/7/26</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail'); }}>
-          <View style={styles.memoListItem}>
-            <Text style={styles.memoListTitle}>Hello</Text>
-            <Text style={styles.memoListDate}>2018/7/26</Text>
-          </View>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail'); }}>
-          <View style={styles.memoListItem}>
-            <Text style={styles.memoListTitle}>Hello</Text>
-            <Text style={styles.memoListDate}>2018/7/26</Text>
-          </View>
-        </TouchableHighlight>
+        <FlatList data={this.props.memoList} renderItem={this.renderMemo.bind(this)} />
       </View>
     );
   }
