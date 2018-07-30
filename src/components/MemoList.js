@@ -22,14 +22,19 @@ const styles = StyleSheet.create({
   },
 });
 
+const dataString = (data) => {
+  const str = data.toISOString();
+  return str.split('T')[0];
+};
+
 class MemoList extends React.Component {
   renderMemo({ item }) {
     console.log(item);
     return (
-      <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail'); }}>
+      <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail', { memo: item }); }}>
         <View style={styles.memoListItem}>
-          <Text style={styles.memoListTitle}>{item.body}</Text>
-          <Text style={styles.memoListDate}>2018/7/30</Text>
+          <Text style={styles.memoListTitle}>{item.body.substring(0, 10)}</Text>
+          <Text style={styles.memoListDate}>{dataString(item.createdOn)}</Text>
         </View>
       </TouchableHighlight>
     );
