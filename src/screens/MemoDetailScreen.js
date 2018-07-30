@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const dataString = (data) => {
-  const str = data.toISOString();
+const dateString = (date) => {
+  const str = date.toISOString();
   return str.split('T')[0];
 };
 
@@ -51,6 +51,10 @@ class MemoDetailScreen extends React.Component {
     this.setState({ memo: params.memo });
   }
 
+  returnMemo(memo) {
+    this.setState({ memo });
+  }
+
   render() {
     const { memo } = this.state;
     return (
@@ -58,7 +62,7 @@ class MemoDetailScreen extends React.Component {
         <View>
           <View style={styles.memoDetailHeader}>
             <Text style={styles.memoDetailHeaderTitle}>{memo.body.substring(0, 10)}</Text>
-            <Text style={styles.memoDetailHeaderDate}>{dataString(memo.createdOn)}</Text>
+            <Text style={styles.memoDetailHeaderDate}>{dateString(memo.createdOn)}</Text>
           </View>
         </View>
         <View style={styles.memoDetailContent}>
@@ -68,7 +72,8 @@ class MemoDetailScreen extends React.Component {
         <CircleButton
           color="white"
           style={styles.editButton}
-          onPress={() => { this.props.navigation.navigate('MemoEdit', { memo }); }}>
+          onPress={() => { this.props.navigation.navigate('MemoEdit', { memo }); }}
+        >
           {'\uf044'}
         </CircleButton>
       </View>
