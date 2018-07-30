@@ -1,3 +1,4 @@
+import firebase from 'firebase';
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import MemoList from '../components/MemoList';
@@ -11,15 +12,35 @@ const styles = StyleSheet.create({
 });
 
 class MemoListScreen extends React.Component {
+  state = {
+    memoList: [],
+  }
+
+  componentWillMount() {
+    const { currentUser } = firebase.auth();
+    const db = firebase.firestore();
+    db.collection(`users/${currentUser.uid}/memos`)
+      .get()
+      .then((querySnapshot) => {
+        const memoList = [];
+        querySnapshot.forEach((doc) => {
+          memoList.push(doc.data());
+        });
+        this.setState({ memoList });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   handlePress() {
-    const { params } = this.props.navigation.state;
-    this.props.navigation.navigate('MemoCreate', { currentUser: params.currentUser });
+    this.props.navigation.navigate('MemoCreate');
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <MemoList navigation={this.props.navigation} />
+        <MemoList memoList={this.state.memoList} navigation={this.props.navigation} />
         <CircleButton onPress={this.handlePress.bind(this)}>
           {'\uf0fe'}
         </CircleButton>

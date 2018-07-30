@@ -41,16 +41,16 @@ const styles = StyleSheet.create({
 
 class LoginScreen extends React.Component {
   state = {
-    email: '',
-    password: '',
+    email: 'user1@example.com',
+    password: 'shinbee1',
   }
 
   // eslint-disable-next-line
   handleSubmit() {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then((user) => {
-        console.log(user);
-        this.props.navigation.navigate('Home', { currentUser: user });
+        console.log('success!', user);
+        this.props.navigation.navigate('Home');
       })
       .catch((error) => {
         console.log('error!', error);
