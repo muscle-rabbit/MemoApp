@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   editButton: {
-    top: 75,
+    top: 68,
   },
 });
 

@@ -9,14 +9,13 @@ import fontAwesome from '../../assets/fonts/fa-regular-400.ttf';
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    bottom: 32,
-    right: 32,
-    width: 48,
-    height: 48,
+    bottom: 24,
+    right: 24,
   },
   circleBottun: {
     width: 48,
     height: 48,
+    margin: 8,
     backgroundColor: '#ffc0cb',
     borderRadius: 24,
     justifyContent: 'center',
@@ -24,6 +23,7 @@ const styles = StyleSheet.create({
     shadowColor: '#1f1518',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.6,
+    elevation: 4,
   },
   circleButtonTitle: {
     fontFamily: 'FontAwesome',
