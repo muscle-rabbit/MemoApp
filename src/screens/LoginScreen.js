@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   StyleSheet, View, TextInput, TouchableHighlight, Text,
 } from 'react-native';
+import firebase from 'firebase';
 
 const styles = StyleSheet.create({
   container: {
@@ -46,7 +47,13 @@ class LoginScreen extends React.Component {
 
   // eslint-disable-next-line
   handleSubmit() {
-    
+    firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => {
+        this.props.navigation.navigate('Home');
+      })
+      .catch((error) => {
+        console.log('error!', error);
+      });
   }
 
   render() {
@@ -70,7 +77,7 @@ class LoginScreen extends React.Component {
           placeholder="password"
           secureTextEntry
         />
-        <TouchableHighlight style={styles.button} title="submit" onPress={this.handleSubmit}>
+        <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}>
           <Text style={styles.buttonTitle}>Login</Text>
         </TouchableHighlight>
       </View>
