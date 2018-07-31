@@ -49,8 +49,8 @@ const styles = StyleSheet.create({
 
 class LoginScreen extends React.Component {
   state = {
-    email: 'user2@example.com',
-    password: 'shinbee1',
+    email: '',
+    password: '',
   }
 
   // eslint-disable-next-line
