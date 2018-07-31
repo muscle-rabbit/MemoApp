@@ -22,8 +22,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const dataString = (data) => {
-  const str = data.toISOString();
+const dateString = (date) => {
+  if (date === null) { return ''; }
+  const str = date.toISOString();
   return str.split('T')[0];
 };
 
@@ -34,7 +35,7 @@ class MemoList extends React.Component {
       <TouchableHighlight onPress={() => { this.props.navigation.navigate('MemoDetail', { memo: item }); }}>
         <View style={styles.memoListItem}>
           <Text style={styles.memoListTitle}>{item.body.substring(0, 10)}</Text>
-          <Text style={styles.memoListDate}>{dataString(item.createdOn)}</Text>
+          <Text style={styles.memoListDate}>{dateString(item.createdOn)}</Text>
         </View>
       </TouchableHighlight>
     );

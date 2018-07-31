@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
 });
 
 const dateString = (date) => {
+  if (date === null) { return ''; }
   const str = date.toISOString();
   return str.split('T')[0];
 };
@@ -61,7 +62,7 @@ class MemoDetailScreen extends React.Component {
       <View style={styles.container}>
         <View>
           <View style={styles.memoDetailHeader}>
-            <Text style={styles.memoDetailHeaderTitle}>{memo.body.substring(0, 10)}</Text>
+            <Text style={styles.memoDetailHeaderTitle}>{memo.body ? memo.body.substring(0, 10) : ''}</Text>
             <Text style={styles.memoDetailHeaderDate}>{dateString(memo.createdOn)}</Text>
           </View>
         </View>

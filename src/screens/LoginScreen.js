@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 
 class LoginScreen extends React.Component {
   state = {
-    email: 'user1@example.com',
+    email: 'user2@example.com',
     password: 'shinbee1',
   }
 
